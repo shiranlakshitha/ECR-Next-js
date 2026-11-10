@@ -22,15 +22,13 @@ flowchart LR
 
     subgraph AWS ["Amazon Web Services"]
         C["🔐 AWS IAM (OIDC Provider)"]
-        D["📦 Amazon ECR"]
-        E["☁️ AWS App Runner / ECS"]
+        D["📦 Amazon ECR (Container Registry)"]
     end
 
     B -- "1. Request OIDC Token" --> C
     C -- "2. AssumeRoleWithWebIdentity (Temporary STS Token)" --> B
     B -- "3. docker build & tag" --> B
     B -- "4. docker push" --> D
-    D -- "5. Deploy Container" --> E
 ```
 
 ---
@@ -79,7 +77,6 @@ This project uses **OpenID Connect (OIDC)**:
 | **CI/CD Orchestration** | [GitHub Actions](https://github.com/features/actions) |
 | **Container Registry** | [Amazon Elastic Container Registry (ECR)](https://aws.amazon.com/ecr/) |
 | **Cloud Authentication** | AWS IAM Identity Provider (OIDC) + STS Web Identity |
-| **Target Runtime** | [AWS App Runner](https://aws.amazon.com/apprunner/) / [Amazon ECS Fargate](https://aws.amazon.com/fargate/) |
 
 ---
 
